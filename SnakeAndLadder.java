@@ -20,6 +20,8 @@ public class SnakeAndLadder {
 									break;
 					case LADDER:System.out.println("####### LADDER #######");
 								player_position=player_position+move_positions;
+								if(player_position>end)
+									player_position=player_position-move_positions;
 								break;
 					case SNAKE:System.out.println("$$$$$$$$ SNAKE $$$$$$$$");
 								player_position=player_position-move_positions;
@@ -27,7 +29,11 @@ public class SnakeAndLadder {
 									player_position=0;
 								break;
 			}
-		System.out.println("Player Current Position :"+player_position);
+			System.out.println("Player Current Position :"+player_position);
+			if(player_position==100) {
+				System.out.println("Won!");
+				System.exit(0);
+			}
 		}
 			
 	}
