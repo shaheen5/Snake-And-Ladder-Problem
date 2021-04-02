@@ -4,6 +4,7 @@ public class SnakeAndLadder {
 	public static final int NO_PLAY=1;
 	public static final int LADDER=2;
 	public static final int SNAKE=3;
+	public static int die_count=0;
 	
 	public static void main(String args[]) {
 		System.out.println("Welcome to Snake and Ladder Simulation Program !!!");
@@ -12,7 +13,7 @@ public class SnakeAndLadder {
 		System.out.println("\n******************Game Starts******************\n"+"Player position is "+player_position);
 		while(player_position <= end) {
 			int move_positions=rollDie();
-			System.out.println("Number of positions to move :"+move_positions);
+			System.out.println("Number Occurred On Die :"+move_positions);
 			int option=getOption();
 			System.out.println("Selected option="+option);
 			switch(option) {
@@ -32,12 +33,13 @@ public class SnakeAndLadder {
 			System.out.println("Player Current Position :"+player_position);
 			if(player_position==100) {
 				System.out.println("Won!");
+				System.out.println("Total Number of times Die Rolled :-"+die_count);	
 				System.exit(0);
 			}
 		}
-			
 	}
 	public static int rollDie() {
+		die_count++;
 		return (int)(Math.random()*6)+1;
 	}
 	public static int getOption() {
