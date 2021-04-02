@@ -7,24 +7,28 @@ public class SnakeAndLadder {
 	
 	public static void main(String args[]) {
 		System.out.println("Welcome to Snake and Ladder Simulation Program !!!");
-		int start=0;
+		int start=0,end=100;
 		int player_position=start;
 		System.out.println("\n******************Game Starts******************\n"+"Player position is "+player_position);
-		int move_positions=rollDie();
-		System.out.println("Number of positions to move :"+move_positions);
-		int option=getOption();
-		System.out.println("Selected option="+option);
-		switch(option) {
-			case NO_PLAY:System.out.println("!!!!!!!! NO-PLAY !!!!!!!");
-						break;
-			case LADDER:System.out.println("######## LADDER ##########");
-						player_position=player_position+move_positions;
-						break;
-			case SNAKE:System.out.println("$$$$$$$$$$ SNAKE $$$$$$$$$$");
-						player_position=player_position-move_positions;
-						break;
-		}
+		while(player_position <= end) {
+			int move_positions=rollDie();
+			System.out.println("Number of positions to move :"+move_positions);
+			int option=getOption();
+			System.out.println("Selected option="+option);
+			switch(option) {
+					case NO_PLAY:System.out.println("!!!!!! NO-PLAY !!!!!!");
+									break;
+					case LADDER:System.out.println("####### LADDER #######");
+								player_position=player_position+move_positions;
+								break;
+					case SNAKE:System.out.println("$$$$$$$$ SNAKE $$$$$$$$");
+								player_position=player_position-move_positions;
+								if(player_position < start)
+									player_position=0;
+								break;
+			}
 		System.out.println("Player Current Position :"+player_position);
+		}
 			
 	}
 	public static int rollDie() {
